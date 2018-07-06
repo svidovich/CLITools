@@ -1,0 +1,4 @@
+*.swp
+*.tar
+*.txt
+/bash/dockerports/data/

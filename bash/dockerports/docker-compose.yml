@@ -1,0 +1,11 @@
+# We want an ftp server that has persisting memory.
+pureftpd:
+  image: vimagick/pure-ftpd
+  ports:
+    - "21:21"
+  volumes:
+    - ./data/ftpuser:/home/ftpuser
+    - ./data/pure-ftpd:/etc/pure-ftpd
+  privileged: true
+  restart: always
+
