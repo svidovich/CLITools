@@ -1,0 +1,1 @@
+For each file in a directory, if it is a text file, reorder the entire file such that the last line is first and the first line is last.
