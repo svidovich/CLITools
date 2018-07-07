@@ -1,0 +1,4 @@
+Make fizzbuzz with a bash script.
+Any number divisible by three is replaced by fizz,
+any number divisible by five is replaced by buzz.
+Let's go from 1 to 100!
