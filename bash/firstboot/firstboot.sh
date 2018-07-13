@@ -11,7 +11,7 @@ elif [ $choice == 2 ]
 then
 	apt update
 	apt upgrade
-	apt install vim tmux docker python python3-pip virtualenv
+	apt install vim tmux docker python python3-pip virtualenv nmap tshark
 else
 	printf "\nBad input.\n"
 fi
