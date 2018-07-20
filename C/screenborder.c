@@ -27,26 +27,34 @@ int main () {
 		{
 			if (a == 0)
 			{
+				attron(A_BOLD | A_BLINK);
 				mvaddch(a,b,ch | COLOR_PAIR(rand() % 8));
+				attroff(A_BOLD | A_BLINK);
 				refresh();
 				usleep(900);
 
 			}
 			else if (a == y-1)
 			{
+				attron(A_BLINK | A_BOLD);
 				mvaddch(a,b,ch | COLOR_PAIR(rand() % 8));
+				attroff(A_BLINK | A_BOLD);
 				refresh();
 				usleep(900);
 			}
 			else if (b == 0)
 			{
+				attron(A_BLINK | A_BOLD);
 				mvaddch(a,b,ch | COLOR_PAIR(rand() % 8));
+				attroff(A_BLINK | A_BOLD);
 				refresh();
 				usleep(900);
 			}
 			else if (b == x-1)
 			{
+				attron(A_BLINK | A_BOLD);
 				mvaddch(a,b,ch | COLOR_PAIR(rand() % 8));
+				attroff(A_BLINK | A_BOLD);
 				refresh();
 				usleep(900);
 			}
