@@ -163,9 +163,9 @@ void band(WINDOW *the_window)
 		//int r = rand();
 		for ( j = 1; j < x-1; j++ )
 		{
-			wattron(the_window, COLOR_PAIR(i % 5));
+			wattron(the_window, COLOR_PAIR(i % 7));
 			mvwaddch(the_window, i, j, ch);
-			wattroff(the_window, COLOR_PAIR(i % 5));
+			wattroff(the_window, COLOR_PAIR(i % 7));
 			wrefresh(the_window);
 			usleep(1500);
 		}
