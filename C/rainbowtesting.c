@@ -8,6 +8,8 @@ void removewindow(WINDOW *the_window);
 void buildmenu(WINDOW *the_window, int highlight);
 void band(WINDOW *the_window);
 
+// TODO: Make this into a struct that holds all of this data 
+//       then, the  menu becomes arbitrary.
 	// Highlight represents a cursor, choices represents menu items.
 	// For more items and cursors, make more of these.
 	int highlight = 1;
@@ -31,7 +33,6 @@ int main ()
 	WINDOW *tr; 
 	WINDOW *bl;
 	WINDOW *br;
-	srand(time(0));
 	int ch;
 	int a, b, x, y;
 	initscr();
@@ -58,6 +59,8 @@ int main ()
 	keypad(bl, TRUE);
 	keypad(br, TRUE);
 	refresh();
+	// TODO: Put this into a function that gets called on a window
+	//	 and does a menu instance for the window.
 	buildmenu(tl,highlight);
 	while(1)
 	{
@@ -126,6 +129,7 @@ void removewindow(WINDOW *the_window)
 	delwin(the_window);
 }
 
+// TODO: Fix weird coloring issues with the menu options
 // Builds a menu with n options
 void buildmenu(WINDOW *the_window, int highlight)
 {
