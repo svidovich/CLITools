@@ -40,6 +40,7 @@ int main ()
 	noecho();
 	getmaxyx(stdscr, y, x);
 	refresh();
+	start_color();
 	init_pair(0, COLOR_WHITE, COLOR_BLACK);
 	init_pair(1, COLOR_RED, COLOR_BLACK);
 	init_pair(2, COLOR_GREEN, COLOR_BLACK);
@@ -160,7 +161,7 @@ void band(WINDOW *the_window)
 		{
 			wattron(the_window, COLOR_PAIR(i % 5));
 			mvwaddch(the_window, i, j, ch);
-			wattroff(the_window, COLOR_PAIR(i % 8));
+			wattroff(the_window, COLOR_PAIR(i % 5));
 			wrefresh(the_window);
 			usleep(1500);
 		}
