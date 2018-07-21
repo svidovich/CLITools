@@ -6,6 +6,7 @@
 WINDOW *createwindow(int height, int width, int y0, int x0);
 void removewindow(WINDOW *the_window);
 void buildmenu(WINDOW *the_window, int highlight);
+void band(WINDOW *the_window);
 
 	// Highlight represents a cursor, choices represents menu items.
 	// For more items and cursors, make more of these.
@@ -25,7 +26,6 @@ void buildmenu(WINDOW *the_window, int highlight);
 
 int main ()
 {
-
 	int choice = 0;
 	WINDOW *tl;
 	WINDOW *tr; 
@@ -40,6 +40,14 @@ int main ()
 	noecho();
 	getmaxyx(stdscr, y, x);
 	refresh();
+	init_pair(0, COLOR_WHITE, COLOR_BLACK);
+	init_pair(1, COLOR_RED, COLOR_BLACK);
+	init_pair(2, COLOR_GREEN, COLOR_BLACK);
+	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
+ 	init_pair(4, COLOR_BLUE, COLOR_BLACK);
+	init_pair(5, COLOR_MAGENTA, COLOR_BLACK);
+	init_pair(6, COLOR_CYAN, COLOR_BLACK);
+	init_pair(7, COLOR_WHITE, COLOR_BLACK);
 	tl = createwindow(y/2,x/2, 0, 0);
 	tr = createwindow(y/2,x/2, 0, x/2);
 	bl = createwindow(y/2,x/2, y/2, 0);
@@ -82,6 +90,8 @@ int main ()
 		}
 		buildmenu(tl, highlight);
 		// User pressed enter.
+		if( choice == 1 )
+			band(tl);
 		if( choice != 0 )
 			break;
 	}
@@ -138,7 +148,27 @@ void buildmenu(WINDOW *the_window, int highlight)
 	wrefresh(the_window);
 }
 
+void band(WINDOW *the_window)
+{
+	int i, j, x, y, ch;
+	ch = getch();
+	getmaxyx(the_window, y, x);
+	for ( i = 1; i < y-1; i ++)
+	{
+		//int r = rand();
+		for ( j = 1; j < x-1; j++ )
+		{
+			wattron(the_window, COLOR_PAIR(i % 5));
+			mvwaddch(the_window, i, j, ch);
+			wattroff(the_window, COLOR_PAIR(i % 8));
+			wrefresh(the_window);
+			usleep(1500);
+		}
+		//wrefresh(the_window);
+		//usleep(900);
+	}
 
+}
 
 
 
