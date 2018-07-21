@@ -2,17 +2,20 @@
 
 int main ()
 {
-	int ch;
+	int ch, a, b;
 	bool cont = true;
+	MEVENT mouseevent;
 	initscr();
+	clear();
+	noecho();
 	mousemask(BUTTON1_CLICKED, NULL);
 	keypad(stdscr, TRUE);
 	printw("Click!\n");
 	printw("Press F1 to leave.\n");
 	refresh();
+	getmaxyx(stdscr, a, b);
 	while (cont)
 	{
-		MEVENT mouseevent;
 		ch = getch();
 		// If we detect F1,
 		if ( ch == KEY_F(1) )
@@ -33,11 +36,12 @@ int main ()
 				//   mmask_t bstate;  button state bits
 				if( mouseevent.bstate & BUTTON1_CLICKED )
 				{
-					int y = mouseevent.y;
-					int x = mouseevent.x;
-					int z = mouseevent.z;
+					int u = mouseevent.y;
+					int v = mouseevent.x;
+					//int z = mouseevent.z;
 					printw("Left Click\n");
-					mvaddch(0, 0, y);
+					refresh();
+					mvaddch(a-2, b-6, u);
 //					mvwaddch(0, 2, y);
 //					mvwaddch(0, 4, z);
 					refresh();
