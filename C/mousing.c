@@ -86,5 +86,39 @@ void starburst(MEVENT mouseevent)
 	move(mouseevent.y, mouseevent.x - 3);
 	printw("<");
 	refresh();
-	usleep(250000);
+	usleep(100000);
+
+
+	move(mouseevent.y + 1, mouseevent.x);
+	printw(" ");
+	move(mouseevent.y - 1 , mouseevent.x);
+	printw(" ");
+	move(mouseevent.y, mouseevent.x + 1);
+	printw(" ");
+	move(mouseevent.y, mouseevent.x - 1);
+	printw(" ");
+	refresh();
+	usleep(100000);
+
+	move(mouseevent.y + 2, mouseevent.x);
+	printw(" ");
+	move(mouseevent.y - 2 , mouseevent.x);
+	printw(" ");
+	move(mouseevent.y, mouseevent.x + 2);
+	printw(" ");
+	move(mouseevent.y, mouseevent.x - 2);
+	printw(" ");
+	refresh();
+	usleep(100000);
+
+	move(mouseevent.y + 3, mouseevent.x);
+	printw(" ");
+	move(mouseevent.y - 3 , mouseevent.x);
+	printw(" ");
+	move(mouseevent.y, mouseevent.x + 3);
+	printw(" ");
+	move(mouseevent.y, mouseevent.x - 3);
+	printw(" ");
+	refresh();
+	usleep(100000);
 }
