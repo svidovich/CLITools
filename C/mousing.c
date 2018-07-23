@@ -1,6 +1,7 @@
 #include <curses.h>
 #include <unistd.h>
 
+void starburst(MEVENT mouseevent);
 int main ()
 {
 	int ch, a, b;
@@ -38,8 +39,7 @@ int main ()
 				//   mmask_t bstate;  button state bits
 				if( mouseevent.bstate & BUTTON1_CLICKED )
 				{
-					move(mouseevent.y,mouseevent.x);
-					printw("%d,%d",mouseevent.y,mouseevent.x);
+					starburst(mouseevent);
 //					int z = mouseevent.z;
 //					printw("Left Click\n");
 //					mvwaddch(stdscr,y,x,"the");
@@ -54,4 +54,19 @@ int main ()
 	}
 	endwin();
 	return 0;
+}
+
+
+
+void starburst(MEVENT mouseevent)
+{
+	move(mouseevent.y + 1, mouseevent.x);
+//	printw("%d,%d",mouseevent.y,mouseevent.x);
+	printw("*");
+	move(mouseevent.y - 1 , mouseevent.x);
+	printw("*");
+	move(mouseevent.y, mouseevent.x + 1);
+	printw("*");
+	move(mouseevent.y, mouseevent.x - 1);
+	printw("*");
 }
