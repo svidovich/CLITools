@@ -16,6 +16,7 @@ int main ()
 	printw("Click!\n");
 	printw("Press F1 to leave.\n");
 	refresh();
+	curs_set(0);
 	getmaxyx(stdscr, a, b);
 	while (cont)
 	{
@@ -40,14 +41,8 @@ int main ()
 				if( mouseevent.bstate & BUTTON1_CLICKED )
 				{
 					starburst(mouseevent);
-//					int z = mouseevent.z;
-//					printw("Left Click\n");
-//					mvwaddch(stdscr,y,x,"the");
 					refresh();
 					continue;
-//					mvaddch(a-2, b-6, u);
-//					mvwaddch(0, 2, y);
-//					mvwaddch(0, 4, z);
 				}
 			}
 		}
@@ -61,7 +56,6 @@ int main ()
 void starburst(MEVENT mouseevent)
 {
 	move(mouseevent.y + 1, mouseevent.x);
-//	printw("%d,%d",mouseevent.y,mouseevent.x);
 	printw("*");
 	move(mouseevent.y - 1 , mouseevent.x);
 	printw("*");
@@ -69,4 +63,28 @@ void starburst(MEVENT mouseevent)
 	printw("*");
 	move(mouseevent.y, mouseevent.x - 1);
 	printw("*");
+	refresh();
+	usleep(250000);
+
+	move(mouseevent.y + 2, mouseevent.x);
+	printw("@");
+	move(mouseevent.y - 2 , mouseevent.x);
+	printw("@");
+	move(mouseevent.y, mouseevent.x + 2);
+	printw("@");
+	move(mouseevent.y, mouseevent.x - 2);
+	printw("@");
+	refresh();
+	usleep(250000);
+
+	move(mouseevent.y + 3, mouseevent.x);
+	printw("v");
+	move(mouseevent.y - 3 , mouseevent.x);
+	printw("^");
+	move(mouseevent.y, mouseevent.x + 3);
+	printw(">");
+	move(mouseevent.y, mouseevent.x - 3);
+	printw("<");
+	refresh();
+	usleep(250000);
 }
