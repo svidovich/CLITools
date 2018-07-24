@@ -1,6 +1,7 @@
 #include <curses.h>
 #include <unistd.h>
 
+void firework(MEVENT mouseevent);
 void starburst(MEVENT mouseevent);
 int main ()
 {
@@ -38,15 +39,15 @@ int main ()
 				//   short id;        id of device
 				//   int x, y, z;     coordinates
 				//   mmask_t bstate;  button state bits
+//				if( mouseevent.bstate & BUTTON1_CLICKED )
+//				{
+//					starburst(mouseevent);
+//					refresh();
+//					continue;
+//				}
 				if( mouseevent.bstate & BUTTON1_CLICKED )
 				{
-					starburst(mouseevent);
-					refresh();
-					continue;
-				}
-				if( mouseevent.bstate & BUTTON3_CLICKED )
-				{
-					starburst(mouseevent);
+					firework(mouseevent);
 					refresh();
 					continue;
 				}
@@ -191,6 +192,7 @@ void firework(MEVENT mouseevent)
 	refresh();
 	usleep(250000);
 
+
 	move(mouseevent.y + 1, mouseevent.x);
 	printw(" ");
 	move(mouseevent.y - 1 , mouseevent.x);
@@ -198,6 +200,14 @@ void firework(MEVENT mouseevent)
 	move(mouseevent.y, mouseevent.x + 1);
 	printw(" ");
 	move(mouseevent.y, mouseevent.x - 1);
+	printw(" ");
+	move(mouseevent.y + 1, mouseevent.x + 1);
+	printw(" ");
+	move(mouseevent.y + 1, mouseevent.x - 1);
+	printw(" ");
+	move(mouseevent.y - 1, mouseevent.x + 1);
+	printw(" ");
+	move(mouseevent.y - 1, mouseevent.x - 1);
 	printw(" ");
 	refresh();
 	usleep(100000);
@@ -210,8 +220,17 @@ void firework(MEVENT mouseevent)
 	printw(" ");
 	move(mouseevent.y, mouseevent.x - 2);
 	printw(" ");
+	move(mouseevent.y + 2, mouseevent.x + 2);
+	printw(" ");
+	move(mouseevent.y + 2, mouseevent.x - 2);
+	printw(" ");
+	move(mouseevent.y - 2, mouseevent.x + 2);
+	printw(" ");
+	move(mouseevent.y - 2, mouseevent.x - 2);
+	printw(" ");
 	refresh();
 	usleep(100000);
+
 
 	move(mouseevent.y + 3, mouseevent.x);
 	printw(" ");
@@ -220,6 +239,14 @@ void firework(MEVENT mouseevent)
 	move(mouseevent.y, mouseevent.x + 3);
 	printw(" ");
 	move(mouseevent.y, mouseevent.x - 3);
+	printw(" ");
+	move(mouseevent.y + 3, mouseevent.x + 3);
+	printw(" ");
+	move(mouseevent.y + 3, mouseevent.x - 3);
+	printw(" ");
+	move(mouseevent.y - 3, mouseevent.x + 3);
+	printw(" ");
+	move(mouseevent.y - 3, mouseevent.x - 3);
 	printw(" ");
 	refresh();
 	usleep(100000);
