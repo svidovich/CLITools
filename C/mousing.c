@@ -44,6 +44,12 @@ int main ()
 					refresh();
 					continue;
 				}
+				if( mouseevent.bstate & BUTTON3_CLICKED )
+				{
+					starburst(mouseevent);
+					refresh();
+					continue;
+				}
 			}
 		}
 	}
@@ -121,4 +127,12 @@ void starburst(MEVENT mouseevent)
 	printw(" ");
 	refresh();
 	usleep(100000);
+}
+
+
+void firework(MEVENT mouseevent)
+{
+
+
+
 }
