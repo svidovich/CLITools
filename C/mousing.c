@@ -152,8 +152,44 @@ void firework(MEVENT mouseevent)
 	refresh();
 	usleep(250000);
 
+	move(mouseevent.y + 2, mouseevent.x);
+	printw(".");
+	move(mouseevent.y - 2 , mouseevent.x);
+	printw(".");
+	move(mouseevent.y, mouseevent.x + 2);
+	printw(".");
+	move(mouseevent.y, mouseevent.x - 2);
+	printw(".");
+	move(mouseevent.y + 2, mouseevent.x + 2);
+	printw(".");
+	move(mouseevent.y + 2, mouseevent.x - 2);
+	printw(".");
+	move(mouseevent.y - 2, mouseevent.x + 2);
+	printw(".");
+	move(mouseevent.y - 2, mouseevent.x - 2);
+	printw(".");
+	refresh();
+	usleep(250000);
 
 
+	move(mouseevent.y + 3, mouseevent.x);
+	printw("*");
+	move(mouseevent.y - 3 , mouseevent.x);
+	printw("*");
+	move(mouseevent.y, mouseevent.x + 3);
+	printw("*");
+	move(mouseevent.y, mouseevent.x - 3);
+	printw("*");
+	move(mouseevent.y + 3, mouseevent.x + 3);
+	printw("*");
+	move(mouseevent.y + 3, mouseevent.x - 3);
+	printw("*");
+	move(mouseevent.y - 3, mouseevent.x + 3);
+	printw("*");
+	move(mouseevent.y - 3, mouseevent.x - 3);
+	printw("*");
+	refresh();
+	usleep(250000);
 
 	move(mouseevent.y + 1, mouseevent.x);
 	printw(" ");
