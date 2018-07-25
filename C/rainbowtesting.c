@@ -63,6 +63,7 @@ int main ()
 	refresh();
 	// TODO: Put this into a function that gets called on a window
 	//	 and does a menu instance for the window.
+	clearwin(tl);
 	buildmenu(tl,highlight);
 	while(1)
 	{
@@ -201,6 +202,12 @@ void curl(WINDOW *the_window)
 			if ( i%2 == 0 )
 			{
 				if ( j%2 == 0 )
+				{
+					mvwaddch(the_window, i, j, ch);
+					wrefresh(the_window);
+					usleep(1500);
+				}
+				else if ( i%2 == 0 )
 				{
 					mvwaddch(the_window, i, j, ch);
 					wrefresh(the_window);
