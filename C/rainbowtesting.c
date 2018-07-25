@@ -63,10 +63,10 @@ int main ()
 	refresh();
 	// TODO: Put this into a function that gets called on a window
 	//	 and does a menu instance for the window.
+	buildmenu(tl,highlight);
 	while(1)
 	{
 		int choice = 0;
-		buildmenu(tl,highlight);
 		wrefresh(tl);
 		// This will get complicated with multiple menus.
 		ch = wgetch(tl);
@@ -90,24 +90,30 @@ int main ()
 					// Otherwise, move down the list
 					++highlight;
 				break;
-			case 10:
+			case '\n':
 				choice = highlight;
 				break;
 			default:
 				break;
 		}
-		buildmenu(tl, highlight);
 		// User pressed enter.
 		if( choice == 1 )
-			clearwin(tl);
-			band(tl);
-			clearwin(tl);
-		if( choice == 2 )
-			clearwin(tl);
-			curl(tl);
-			clearwin(tl);
-		if( choice != 0 )
-			break;
+			{
+				clearwin(tl);
+				band(tl);
+				clearwin(tl);
+			}
+		else if( choice == 2 )
+			{
+				clearwin(tl);
+				curl(tl);
+				clearwin(tl);
+			}
+		else if( choice != 0 )
+			{
+				break;
+			}
+		buildmenu(tl, highlight);
 	}
 	// Clear to end of line.
 	clrtoeol;
