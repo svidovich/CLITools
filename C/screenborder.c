@@ -22,6 +22,7 @@ WINDOW *createwindow(int height, int width, int y0, int x0)
 {
 	WINDOW *the_window;
 	the_window = newwin(height, width, y0, x0);
+	wrefresh(the_window);
 	return the_window;
 }
 void screenborder(WINDOW *the_window) {
@@ -46,35 +47,35 @@ void screenborder(WINDOW *the_window) {
 		{
 			if (a == 0)
 			{
-				attron(A_BOLD | A_BLINK);
+				attron(A_BOLD);
 				mvwaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
-				attroff(A_BOLD | A_BLINK);
-				refresh();
+				attroff(A_BOLD);
+				wrefresh(the_window);
 				usleep(900);
 
 			}
 			else if (a == y-1)
 			{
-				attron(A_BLINK | A_BOLD);
+				attron(A_BOLD);
 				mvwaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
-				attroff(A_BLINK | A_BOLD);
-				refresh();
+				attroff(A_BOLD);
+				wrefresh(the_window);
 				usleep(900);
 			}
 			else if (b == 0)
 			{
-				attron(A_BLINK | A_BOLD);
+				attron(A_BOLD);
 				mvwaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
-				attroff(A_BLINK | A_BOLD);
-				refresh();
+				attroff(A_BOLD);
+				wrefresh(the_window);
 				usleep(900);
 			}
 			else if (b == x-1)
 			{
-				attron(A_BLINK | A_BOLD);
+				attron(A_BOLD);
 				mvwaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
-				attroff(A_BLINK | A_BOLD);
-				refresh();
+				attroff(A_BOLD);
+				wrefresh(the_window);
 				usleep(900);
 			}
 		}
