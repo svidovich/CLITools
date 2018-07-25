@@ -8,13 +8,57 @@
 void starburst(MEVENT mouseevent);
 
 // Firework: Takes a mouse event and prints a cute firework at the event location.
-// Requires mousemast (EVENT_NAME).
+// Requires mousemask (EVENT_NAME).
 // Recommends curs_set(0) so that the cursor is invisible.
 void firework(MEVENT mouseevent);
 
 // Screenborder: Takes a winow and makes a cute rainbow border in it given a user's
 // choice of letter. Argument is any window.
 void screenborder(WINDOW *the_window);
+
+
+// launch and clearlaunch: These come as a pair. They draw then erase a parabola that starts
+// at (0,0) and eventually reaches the mouse event location.
+// Requires mousemask (EVENT_NAME). Recommends curs_set(0) so that the cursor is invisible.
+void launch(MEVENT mouseevent);
+void clearlaunch(MEVENT mouseevent);
+
+
+void launch(MEVENT mouseevent)
+{
+	int i;
+	int y = mouseevent.y;
+	int x = mouseevent.x;
+	for (i = 0; i <= x; i++)
+	{
+		int a = floor((y/pow(x, 2))*pow(i, 2))   ;
+		move(a, i);
+		printw(".");
+		refresh();
+		usleep(20000);
+	}
+
+}
+
+
+void clearlaunch(MEVENT mouseevent)
+{
+	int i;
+	int y = mouseevent.y;
+	int x = mouseevent.x;
+	for (i = 0; i <= x; i++)
+	{
+		int a = floor((y/pow(x, 2))*pow(i, 2))   ;
+		move(a, i);
+		printw(" ");
+		refresh();
+		usleep(10000);
+	}
+
+}
+
+
+
 
 
 void screenborder(WINDOW *the_window) {
