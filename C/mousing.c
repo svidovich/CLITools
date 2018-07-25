@@ -1,8 +1,11 @@
 #include <curses.h>
 #include <unistd.h>
+#include <math.h>
 
 void firework(MEVENT mouseevent);
 void starburst(MEVENT mouseevent);
+void launch(MEVENT mouseevent);
+
 int main ()
 {
 	int ch, a, b;
@@ -47,7 +50,7 @@ int main ()
 //				}
 				if( mouseevent.bstate & BUTTON1_CLICKED )
 				{
-					firework(mouseevent);
+					launch(mouseevent);
 					refresh();
 					continue;
 				}
@@ -58,6 +61,30 @@ int main ()
 	return 0;
 }
 
+
+
+void launch(MEVENT mouseevent)
+{
+	int i;
+	int y = mouseevent.y;
+	int x = mouseevent.x;
+	for (i = 0; i <= x; i++)
+	{
+		int a = floor((y/pow(x, 2))*pow(i, 2))   ;
+		move(a, i);
+		printw(".");
+		refresh();
+		usleep(50000);
+	}
+
+}
+
+
+void clearlaunch(MEVENT mouseevent)
+{
+
+
+}
 
 
 void starburst(MEVENT mouseevent)
