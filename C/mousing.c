@@ -14,7 +14,7 @@ int main ()
 	initscr();
 	clear();
 	noecho();
-	mousemask(BUTTON1_CLICKED, NULL);
+	mousemask(ALL_MOUSE_EVENTS, NULL);
 	keypad(stdscr, TRUE);
 	MEVENT mouseevent;
 	// keypad(window, TRUE); Need this line with additional windows, per window
@@ -43,15 +43,18 @@ int main ()
 				//   short id;        id of device
 				//   int x, y, z;     coordinates
 				//   mmask_t bstate;  button state bits
-//				if( mouseevent.bstate & BUTTON1_CLICKED )
-//				{
-//					starburst(mouseevent);
-//					refresh();
-//					continue;
-//				}
+				if( mouseevent.bstate & BUTTON3_CLICKED )
+				{
+					launch(mouseevent);
+					starburst(mouseevent);
+					clearlaunch(mouseevent);
+					refresh();
+					continue;
+				}
 				if( mouseevent.bstate & BUTTON1_CLICKED )
 				{
 					launch(mouseevent);
+					firework(mouseevent);
 					clearlaunch(mouseevent);
 					refresh();
 					continue;
@@ -76,7 +79,7 @@ void launch(MEVENT mouseevent)
 		move(a, i);
 		printw(".");
 		refresh();
-		usleep(50000);
+		usleep(20000);
 	}
 
 }
@@ -93,7 +96,7 @@ void clearlaunch(MEVENT mouseevent)
 		move(a, i);
 		printw(" ");
 		refresh();
-		usleep(15000);
+		usleep(10000);
 	}
 
 }
