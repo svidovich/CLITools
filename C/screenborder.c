@@ -4,17 +4,26 @@
 #include <time.h>
 
 void screenborder(WINDOW *the_window);
+WINDOW *createwindow(int height, int width, int y0, int x0);
 
 int main () {
 	initscr();
 	raw();
-	screenborder();
+	WINDOW *awindo;
+	awindo  = createwindow(10, 12, 10, 12);
+	screenborder(awindo);
 	getch();
+	delwin(awindo);
 	endwin();
 	return 0;
 }
 
-
+WINDOW *createwindow(int height, int width, int y0, int x0)
+{
+	WINDOW *the_window;
+	the_window = newwin(height, width, y0, x0);
+	return the_window;
+}
 void screenborder(WINDOW *the_window) {
 	srand(time(0));
 	int ch;
@@ -38,7 +47,7 @@ void screenborder(WINDOW *the_window) {
 			if (a == 0)
 			{
 				attron(A_BOLD | A_BLINK);
-				mvaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
+				mvwaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
 				attroff(A_BOLD | A_BLINK);
 				refresh();
 				usleep(900);
@@ -47,7 +56,7 @@ void screenborder(WINDOW *the_window) {
 			else if (a == y-1)
 			{
 				attron(A_BLINK | A_BOLD);
-				mvaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
+				mvwaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
 				attroff(A_BLINK | A_BOLD);
 				refresh();
 				usleep(900);
@@ -55,7 +64,7 @@ void screenborder(WINDOW *the_window) {
 			else if (b == 0)
 			{
 				attron(A_BLINK | A_BOLD);
-				mvaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
+				mvwaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
 				attroff(A_BLINK | A_BOLD);
 				refresh();
 				usleep(900);
@@ -63,7 +72,7 @@ void screenborder(WINDOW *the_window) {
 			else if (b == x-1)
 			{
 				attron(A_BLINK | A_BOLD);
-				mvaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
+				mvwaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
 				attroff(A_BLINK | A_BOLD);
 				refresh();
 				usleep(900);
