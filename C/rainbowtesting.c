@@ -30,7 +30,6 @@ void clearwin(WINDOW *the_window);
 
 int main ()
 {
-	int choice = 0;
 	WINDOW *tl;
 	WINDOW *tr; 
 	WINDOW *bl;
@@ -38,6 +37,7 @@ int main ()
 	int ch;
 	int a, b, x, y;
 	initscr();
+	curs_set(0);
 	cbreak();
 //	raw();
 	noecho();
@@ -63,9 +63,11 @@ int main ()
 	refresh();
 	// TODO: Put this into a function that gets called on a window
 	//	 and does a menu instance for the window.
-	buildmenu(tl,highlight);
 	while(1)
 	{
+		int choice = 0;
+		buildmenu(tl,highlight);
+		wrefresh(tl);
 		// This will get complicated with multiple menus.
 		ch = wgetch(tl);
 		switch(ch)
@@ -99,9 +101,11 @@ int main ()
 		if( choice == 1 )
 			clearwin(tl);
 			band(tl);
+			clearwin(tl);
 		if( choice == 2 )
 			clearwin(tl);
 			curl(tl);
+			clearwin(tl);
 		if( choice != 0 )
 			break;
 	}
@@ -166,7 +170,6 @@ void band(WINDOW *the_window)
 	getmaxyx(the_window, y, x);
 	for ( i = 1; i < y-1; i ++)
 	{
-		//int r = rand();
 		for ( j = 1; j < x-1; j++ )
 		{
 			wattron(the_window, COLOR_PAIR(i % 7));
@@ -175,9 +178,8 @@ void band(WINDOW *the_window)
 			wrefresh(the_window);
 			usleep(1500);
 		}
-		//wrefresh(the_window);
-		//usleep(900);
 	}
+	getch();
 
 }
 
@@ -201,6 +203,7 @@ void curl(WINDOW *the_window)
 			}
 		}
 	}
+	getch();
 
 }
 
