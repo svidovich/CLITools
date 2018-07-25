@@ -5,6 +5,7 @@
 void firework(MEVENT mouseevent);
 void starburst(MEVENT mouseevent);
 void launch(MEVENT mouseevent);
+void clearlaunch(MEVENT mouseevent);
 
 int main ()
 {
@@ -51,6 +52,7 @@ int main ()
 				if( mouseevent.bstate & BUTTON1_CLICKED )
 				{
 					launch(mouseevent);
+					clearlaunch(mouseevent);
 					refresh();
 					continue;
 				}
@@ -82,7 +84,17 @@ void launch(MEVENT mouseevent)
 
 void clearlaunch(MEVENT mouseevent)
 {
-
+	int i;
+	int y = mouseevent.y;
+	int x = mouseevent.x;
+	for (i = 0; i <= x; i++)
+	{
+		int a = floor((y/pow(x, 2))*pow(i, 2))   ;
+		move(a, i);
+		printw(" ");
+		refresh();
+		usleep(15000);
+	}
 
 }
 
