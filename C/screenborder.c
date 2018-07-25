@@ -3,12 +3,22 @@
 #include <stdlib.h>
 #include <time.h>
 
+void screenborder(WINDOW *the_window);
+
 int main () {
+	initscr();
+	raw();
+	screenborder();
+	getch();
+	endwin();
+	return 0;
+}
+
+
+void screenborder(WINDOW *the_window) {
 	srand(time(0));
 	int ch;
 	int a, b, x, y;
-	initscr();
-	raw();
 	start_color();
  	init_pair(0, COLOR_WHITE, COLOR_BLACK);
 	init_pair(1, COLOR_RED, COLOR_BLACK);
@@ -19,7 +29,7 @@ int main () {
 	init_pair(6, COLOR_CYAN, COLOR_BLACK);
 	init_pair(7, COLOR_WHITE, COLOR_BLACK);
 	noecho();
-	getmaxyx(stdscr, y, x);
+	getmaxyx(the_window, y, x);
 	ch = getch();
 	for ( a = 0; a < y; a++)
 	{
@@ -28,7 +38,7 @@ int main () {
 			if (a == 0)
 			{
 				attron(A_BOLD | A_BLINK);
-				mvaddch(a,b,ch | COLOR_PAIR(rand() % 8));
+				mvaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
 				attroff(A_BOLD | A_BLINK);
 				refresh();
 				usleep(900);
@@ -37,7 +47,7 @@ int main () {
 			else if (a == y-1)
 			{
 				attron(A_BLINK | A_BOLD);
-				mvaddch(a,b,ch | COLOR_PAIR(rand() % 8));
+				mvaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
 				attroff(A_BLINK | A_BOLD);
 				refresh();
 				usleep(900);
@@ -45,7 +55,7 @@ int main () {
 			else if (b == 0)
 			{
 				attron(A_BLINK | A_BOLD);
-				mvaddch(a,b,ch | COLOR_PAIR(rand() % 8));
+				mvaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
 				attroff(A_BLINK | A_BOLD);
 				refresh();
 				usleep(900);
@@ -53,15 +63,12 @@ int main () {
 			else if (b == x-1)
 			{
 				attron(A_BLINK | A_BOLD);
-				mvaddch(a,b,ch | COLOR_PAIR(rand() % 8));
+				mvaddch(the_window,a,b,ch | COLOR_PAIR(rand() % 8));
 				attroff(A_BLINK | A_BOLD);
 				refresh();
 				usleep(900);
 			}
 		}
 	}
-	getch();
-	endwin();
-	return 0;
-}
 
+}
