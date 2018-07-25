@@ -7,6 +7,8 @@ WINDOW *createwindow(int height, int width, int y0, int x0);
 void removewindow(WINDOW *the_window);
 void buildmenu(WINDOW *the_window, int highlight);
 void band(WINDOW *the_window);
+void curl(WINDOW *the_window);
+void clearwin(WINDOW *the_window);
 
 // TODO: Make this into a struct that holds all of this data 
 //       then, the  menu becomes arbitrary.
@@ -95,7 +97,11 @@ int main ()
 		buildmenu(tl, highlight);
 		// User pressed enter.
 		if( choice == 1 )
+			clearwin(tl);
 			band(tl);
+		if( choice == 2 )
+			clearwin(tl);
+			curl(tl);
 		if( choice != 0 )
 			break;
 	}
@@ -175,9 +181,43 @@ void band(WINDOW *the_window)
 
 }
 
+void curl(WINDOW *the_window)
+{
+	int i, j, x, y, ch;
+	ch = getch();
+	getmaxyx(the_window, y, x);
+	for ( i = 1; i < y-1; i++)
+	{
+		for ( j = 1; j < x-1; j++ )
+		{
+			if ( i%2 == 0 )
+			{
+				if ( j%2 == 0 )
+				{
+					mvwaddch(the_window, i, j, ch);
+					wrefresh(the_window);
+					usleep(1500);
+				}
+			}
+		}
+	}
 
+}
 
-
+void clearwin(WINDOW *the_window)
+{
+	int i, j, x, y, ch;
+	ch = ' ';
+	getmaxyx(the_window, y, x);
+	for ( i = 1; i < y-1; i++ )
+	{
+		for ( j = 1; j < x-1; j ++ )
+		{
+			mvwaddch(the_window, i, j, ch);
+		}
+	}
+	wrefresh(the_window);
+}
 
 
 

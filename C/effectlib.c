@@ -19,7 +19,8 @@ void screenborder(WINDOW *the_window);
 
 // launch and clearlaunch: These come as a pair. They draw then erase a parabola that starts
 // at (0,0) and eventually reaches the mouse event location.
-// Requires mousemask (EVENT_NAME). Recommends curs_set(0) so that the cursor is invisible.
+// Requires mousemask (EVENT_NAME). Requires math.h.
+// Recommends curs_set(0) so that the cursor is invisible.
 void launch(MEVENT mouseevent);
 void clearlaunch(MEVENT mouseevent);
 
