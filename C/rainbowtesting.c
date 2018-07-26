@@ -193,11 +193,13 @@ void band(WINDOW *the_window)
 void curl(WINDOW *the_window)
 {
 	int i, j, xmax, ymax, xmin, ymin, ch;
-	xmin = 0;
-	ymin = 0;
+	xmin = 1;
+	ymin = 1;
 	ch = getch();
 	getmaxyx(the_window, ymax, xmax);
-	while( ymax > ymin && xmax > xmin )
+	ymax -= 2;
+	xmax -= 2;
+	while( ymax >= ymin && xmax >= xmin )
 	{
 		for( j = xmin; j <= xmax; j++ )
 		{
@@ -205,7 +207,7 @@ void curl(WINDOW *the_window)
 			wrefresh(the_window);
 			usleep(1500);
 		}
-		ymin -= 1;
+		ymin += 1;
 		for( i = ymin; i <= ymax; i++ )
 		{
 			mvwaddch(the_window, i, xmax, ch);
@@ -226,6 +228,7 @@ void curl(WINDOW *the_window)
 			wrefresh(the_window);
 			usleep(1500);
 		}
+		xmin += 1;
 	}
 	getch();
 }
