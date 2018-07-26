@@ -192,33 +192,42 @@ void band(WINDOW *the_window)
 
 void curl(WINDOW *the_window)
 {
-	int i, j, x, y, ch;
+	int i, j, xmax, ymax, xmin, ymin, ch;
+	xmin = 0;
+	ymin = 0;
 	ch = getch();
-	getmaxyx(the_window, y, x);
-	for ( i = 1; i < y-1; i++)
+	getmaxyx(the_window, ymax, xmax);
+	while( ymax > ymin && xmax > xmin )
 	{
-		for ( j = 1; j < x-1; j++ )
+		for( j = xmin; j <= xmax; j++ )
 		{
-			if ( i%2 == 0 )
-			{
-				if ( j%2 == 0 )
-				{
-					mvwaddch(the_window, i, j, ch);
-					wrefresh(the_window);
-					usleep(1500);
-				}
-				else if ( i%2 == 0 )
-				{
-					mvwaddch(the_window, i, j, ch);
-					wrefresh(the_window);
-					usleep(1500);
-				}
-			}
+			mvwaddch(the_window, ymin, j, ch);
+			wrefresh(the_window);
+			usleep(1500);
 		}
-	}
+		ymin -= 1;
+		for( i = ymin; i <= ymax; i++ )
+		{
+			mvwaddch(the_window, i, xmax, ch);
+			wrefresh(the_window);
+			usleep(1500);
+		}
+		xmax -= 1;
+		for( j = xmax; j >= xmin; j-- )
+		{
+			mvwaddch(the_window, ymax, j, ch);
+			wrefresh(the_window);
+			usleep(1500);
+		}
+		ymax -= 1;
+		for( i = ymax, i >= ymin; i-- )
+		{
+			mvwaddch(the_window, i, xmin, ch);
+			wrefresh(the_window);
+			usleep(1500);
+		}
 	getch();
-
-}
+	}
 
 void clearwin(WINDOW *the_window)
 {
