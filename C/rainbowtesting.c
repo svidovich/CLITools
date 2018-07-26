@@ -64,8 +64,6 @@ int main ()
 	refresh();
 	// TODO: Put this into a function that gets called on a window
 	//	 and does a menu instance for the window.
-	clearwin(tl);
-	buildmenu(tl,highlight);
 	navigatemenu(tl);
 	// Clear to end of line.
 	clrtoeol;
@@ -81,6 +79,8 @@ int main ()
 
 void navigatemenu(WINDOW *the_window)
 {
+	clearwin(the_window);
+	buildmenu(the_window,highlight);
 	while(1)
 	{
 		int choice = 0;
