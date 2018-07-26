@@ -68,8 +68,30 @@ int main ()
 	keypad(bl, TRUE);
 	keypad(br, TRUE);
 	refresh();
-
-	navigatemenu(tl);
+	bool playing = true;
+	while(playing):
+	{
+		int windowselection;
+		windowselection = getch();
+		switch(windowselection)
+		{
+			case KEY_F(1):
+				navigatemenu(tl);
+				break;
+			case KEY_F(2):
+				navigatemenu(tr);
+				break;
+			case KEY_F(3):
+				navigatemenu(bl);
+				break;
+			case KEY_f(4):
+				navigatemenu(br);
+				break;
+			case KEY_f(9):
+				playing = false;
+			default:
+				break;
+		}
 	// Clear to end of line.
 	clrtoeol;
 	refresh();
