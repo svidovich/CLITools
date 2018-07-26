@@ -17,8 +17,8 @@ void clearwin(WINDOW *the_window);
 	int highlight = 1;
 	char *choices[5] =
 	{
-		"I",
-		"II",
+		"Band",
+		"Curl",
 		"III",
 		"IV",
 		"Exit"
@@ -220,14 +220,15 @@ void curl(WINDOW *the_window)
 			usleep(1500);
 		}
 		ymax -= 1;
-		for( i = ymax, i >= ymin; i-- )
+		for( i = ymax; i >= ymin; i-- )
 		{
 			mvwaddch(the_window, i, xmin, ch);
 			wrefresh(the_window);
 			usleep(1500);
 		}
-	getch();
 	}
+	getch();
+}
 
 void clearwin(WINDOW *the_window)
 {
