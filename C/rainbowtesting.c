@@ -9,6 +9,7 @@ void buildmenu(WINDOW *the_window, int highlight);
 void band(WINDOW *the_window);
 void curl(WINDOW *the_window);
 void clearwin(WINDOW *the_window);
+void navigatemenu(WINDOW *the_window);
 
 // TODO: Make this into a struct that holds all of this data 
 //       then, the  menu becomes arbitrary.
@@ -83,6 +84,7 @@ void navigatemenu(WINDOW *the_window)
 	while(1)
 	{
 		int choice = 0;
+		int ch;
 		wrefresh(the_window);
 		// This will get complicated with multiple menus.
 		ch = wgetch(the_window);
@@ -116,13 +118,13 @@ void navigatemenu(WINDOW *the_window)
 		if( choice == 1 )
 			{
 				clearwin(the_window);
-				band(tl);
+				band(the_window);
 				clearwin(the_window);
 			}
 		else if( choice == 2 )
 			{
 				clearwin(the_window);
-				curl(tl);
+				curl(the_window);
 				clearwin(the_window);
 			}
 		else if( choice != 0 )
