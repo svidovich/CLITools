@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-WINDOW *createwindow(int height, int width, int y0, int x0);
+WINDOW *createwindow(int height, int width, int y0, int x0, int id);
 void removewindow(WINDOW *the_window);
 void buildmenu(WINDOW *the_window, int highlight);
 void band(WINDOW *the_window);
@@ -45,6 +45,8 @@ int main ()
 	getmaxyx(stdscr, y, x);
 	refresh();
 	start_color();
+
+	// These lines initialize colors so we can do rainbows as desired
 	init_pair(0, COLOR_WHITE, COLOR_BLACK);
 	init_pair(1, COLOR_RED, COLOR_BLACK);
 	init_pair(2, COLOR_GREEN, COLOR_BLACK);
@@ -53,17 +55,20 @@ int main ()
 	init_pair(5, COLOR_MAGENTA, COLOR_BLACK);
 	init_pair(6, COLOR_CYAN, COLOR_BLACK);
 	init_pair(7, COLOR_WHITE, COLOR_BLACK);
-	tl = createwindow(y/2,x/2, 0, 0);
-	tr = createwindow(y/2,x/2, 0, x/2);
-	bl = createwindow(y/2,x/2, y/2, 0);
-	br = createwindow(y/2,x/2, y/2, x/2);
+
+	// These lines create windows in the program, top left to bottom right
+	tl = createwindow(y/2,x/2, 0, 0, 1);
+	tr = createwindow(y/2,x/2, 0, x/2, 2);
+	bl = createwindow(y/2,x/2, y/2, 0, 3);
+	br = createwindow(y/2,x/2, y/2, x/2, 4);
+
+	// This allows us to use function keys in each of the windows
 	keypad(tl, TRUE);
 	keypad(tr, TRUE);
 	keypad(bl, TRUE);
 	keypad(br, TRUE);
 	refresh();
-	// TODO: Put this into a function that gets called on a window
-	//	 and does a menu instance for the window.
+
 	navigatemenu(tl);
 	// Clear to end of line.
 	clrtoeol;
@@ -137,13 +142,15 @@ void navigatemenu(WINDOW *the_window)
 
 }
 
-WINDOW *createwindow(int height, int width, int y0, int x0)
+WINDOW *createwindow(int height, int width, int y0, int x0, int id)
 {
+	// This will convert the integer id into a character
+	id += '0';
 	// Let's initialize a window.
 	WINDOW *the_window;
 	the_window = newwin(height, width, y0, x0);
 	// We're going to put a box around the window.
-	wborder(the_window, ':', ':', '~', '~', 'x', 'x', 'x', 'x');
+	wborder(the_window, ':', ':', '~', '~', id, 'x', 'x', 'x');
 	wrefresh(the_window);
 	return the_window;
 }
