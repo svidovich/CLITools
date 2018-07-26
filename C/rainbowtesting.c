@@ -63,35 +63,43 @@ int main ()
 	br = createwindow(y/2,x/2, y/2, x/2, 4);
 
 	// This allows us to use function keys in each of the windows
+	keypad(stdscr, TRUE);
 	keypad(tl, TRUE);
 	keypad(tr, TRUE);
 	keypad(bl, TRUE);
 	keypad(br, TRUE);
 	refresh();
 	bool playing = true;
-	while(playing):
+	while(playing)
 	{
 		int windowselection;
 		windowselection = getch();
-		switch(windowselection)
-		{
-			case KEY_F(1):
+			if( ch == KEY_F(1))
+			{
 				navigatemenu(tl);
-				break;
-			case KEY_F(2):
+			}
+			else if( ch == KEY_F(2))
+			{
 				navigatemenu(tr);
-				break;
-			case KEY_F(3):
+			}
+			else if( ch == KEY_F(3))
+			{
 				navigatemenu(bl);
-				break;
-			case KEY_f(4):
+			}
+			else if( ch == KEY_f(4))
+			{
 				navigatemenu(br);
-				break;
-			case KEY_f(9):
+			}
+			else if( ch == KEY_f(9))
+			{
 				playing = false;
-			default:
-				break;
+			}
+			else
+			{
+				continue;
+			}
 		}
+	}
 	// Clear to end of line.
 	clrtoeol;
 	refresh();
