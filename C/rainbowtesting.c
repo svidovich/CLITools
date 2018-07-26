@@ -86,11 +86,11 @@ int main ()
 			{
 				navigatemenu(bl);
 			}
-			else if( ch == KEY_f(4))
+			else if( ch == KEY_F(4))
 			{
 				navigatemenu(br);
 			}
-			else if( ch == KEY_f(9))
+			else if( ch == KEY_F(9))
 			{
 				playing = false;
 			}
@@ -98,7 +98,6 @@ int main ()
 			{
 				continue;
 			}
-		}
 	}
 	// Clear to end of line.
 	clrtoeol;
