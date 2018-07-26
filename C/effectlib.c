@@ -24,6 +24,52 @@ void screenborder(WINDOW *the_window);
 void launch(MEVENT mouseevent);
 void clearlaunch(MEVENT mouseevent);
 
+// curl: Starting from the top left, draws a spiral around the whole of a window.
+// Takes any window for its argument.
+void curl(WINDOW *the_window);
+
+void curl(WINDOW *the_window)
+{
+	int i, j, xmax, ymax, xmin, ymin, ch;
+	xmin = 1;
+	ymin = 1;
+	ch = getch();
+	getmaxyx(the_window, ymax, xmax);
+	ymax -= 2;
+	xmax -= 2;
+	while( ymax >= ymin && xmax >= xmin )
+	{
+		for( j = xmin; j <= xmax; j++ )
+		{
+			mvwaddch(the_window, ymin, j, ch);
+			wrefresh(the_window);
+			usleep(1500);
+		}
+		ymin += 1;
+		for( i = ymin; i <= ymax; i++ )
+		{
+			mvwaddch(the_window, i, xmax, ch);
+			wrefresh(the_window);
+			usleep(1500);
+		}
+		xmax -= 1;
+		for( j = xmax; j >= xmin; j-- )
+		{
+			mvwaddch(the_window, ymax, j, ch);
+			wrefresh(the_window);
+			usleep(1500);
+		}
+		ymax -= 1;
+		for( i = ymax; i >= ymin; i-- )
+		{
+			mvwaddch(the_window, i, xmin, ch);
+			wrefresh(the_window);
+			usleep(1500);
+		}
+		xmin += 1;
+	}
+	getch();
+}
 
 void launch(MEVENT mouseevent)
 {
