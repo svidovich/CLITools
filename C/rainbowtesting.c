@@ -65,12 +65,27 @@ int main ()
 	//	 and does a menu instance for the window.
 	clearwin(tl);
 	buildmenu(tl,highlight);
+	navigatemenu(tl);
+	// Clear to end of line.
+	clrtoeol;
+	refresh();
+	getch();
+	delwin(tl);
+	delwin(tr);
+	delwin(bl);
+	delwin(br);
+	endwin();
+	return 0;
+}
+
+void navigatemenu(WINDOW *the_window)
+{
 	while(1)
 	{
 		int choice = 0;
-		wrefresh(tl);
+		wrefresh(the_window);
 		// This will get complicated with multiple menus.
-		ch = wgetch(tl);
+		ch = wgetch(the_window);
 		switch(ch)
 		{
 			case KEY_UP:
@@ -100,35 +115,25 @@ int main ()
 		// User pressed enter.
 		if( choice == 1 )
 			{
-				clearwin(tl);
+				clearwin(the_window);
 				band(tl);
-				clearwin(tl);
+				clearwin(the_window);
 			}
 		else if( choice == 2 )
 			{
-				clearwin(tl);
+				clearwin(the_window);
 				curl(tl);
-				clearwin(tl);
+				clearwin(the_window);
 			}
 		else if( choice != 0 )
 			{
 				break;
 			}
-		buildmenu(tl, highlight);
+		buildmenu(the_window, highlight);
 	}
-	// Clear to end of line.
-	clrtoeol;
-	refresh();
-	getch();
-	delwin(tl);
-	delwin(tr);
-	delwin(bl);
-	delwin(br);
-	endwin();
-	return 0;
+
+
 }
-
-
 
 WINDOW *createwindow(int height, int width, int y0, int x0)
 {
