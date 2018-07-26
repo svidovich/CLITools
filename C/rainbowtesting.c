@@ -40,12 +40,10 @@ int main ()
 	initscr();
 	curs_set(0);
 	cbreak();
-//	raw();
 	noecho();
 	getmaxyx(stdscr, y, x);
-	refresh();
 	start_color();
-
+	refresh();
 	// These lines initialize colors so we can do rainbows as desired
 	init_pair(0, COLOR_WHITE, COLOR_BLACK);
 	init_pair(1, COLOR_RED, COLOR_BLACK);
@@ -61,36 +59,35 @@ int main ()
 	tr = createwindow(y/2,x/2, 0, x/2, 2);
 	bl = createwindow(y/2,x/2, y/2, 0, 3);
 	br = createwindow(y/2,x/2, y/2, x/2, 4);
-
+	refresh();
 	// This allows us to use function keys in each of the windows
 	keypad(stdscr, TRUE);
 	keypad(tl, TRUE);
 	keypad(tr, TRUE);
 	keypad(bl, TRUE);
 	keypad(br, TRUE);
-	refresh();
 	bool playing = true;
 	while(playing)
 	{
-		int windowselection;
-		windowselection = getch();
-			if( ch == KEY_F(1))
+			int windowselection;
+			windowselection = wgetch(stdscr);
+			if( windowselection == KEY_F(1))
 			{
 				navigatemenu(tl);
 			}
-			else if( ch == KEY_F(2))
+			else if( windowselection == KEY_F(2))
 			{
 				navigatemenu(tr);
 			}
-			else if( ch == KEY_F(3))
+			else if( windowselection == KEY_F(3))
 			{
 				navigatemenu(bl);
 			}
-			else if( ch == KEY_F(4))
+			else if( windowselection == KEY_F(4))
 			{
 				navigatemenu(br);
 			}
-			else if( ch == KEY_F(9))
+			else if( windowselection == KEY_F(9))
 			{
 				playing = false;
 			}
