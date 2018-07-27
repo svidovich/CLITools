@@ -328,17 +328,17 @@ void zone(WINDOW *the_window)
 			if ( cursor == 0 )
 			{
 				wmove(the_window, j, xmin);
-				vwprintw(the_window, '&');
+				wprintw(the_window, '&');
 			}
 			else if ( cursor == 1 )
 			{
 				wmove(the_window, j, xmin);
-				vwprintw(the_window, '%');
+				wprintw(the_window, '%');
 			}
 			else if ( cursor == 2 )
 			{
 				wmove(the_window, j, xmin);
-				vwprintw(the_window, '$');
+				wprintw(the_window, '$');
 			}
 		}
 		xmin++;
@@ -347,17 +347,17 @@ void zone(WINDOW *the_window)
 			if ( cursor == 0 )
 			{
 				wmove(the_window, ymax, i);
-				vwprintw(the_window, '&');
+				wprintw(the_window, '&');
 			}
 			else if ( cursor == 1 )
 			{
 				wmove(the_window, ymax, i);
-				vwprintw(the_window, '%');
+				wprintw(the_window, '%');
 			}
 			else if ( cursor == 2 )
 			{
 				wmove(the_window, ymax, i);
-				vwprintw(the_window, '$');
+				wprintw(the_window, '$');
 			}
 		}
 		ymax--;
@@ -366,17 +366,17 @@ void zone(WINDOW *the_window)
 			if ( cursor == 0 )
 			{
 				wmove(the_window, j, xmax);
-				vwprintw(the_window, '&');
+				wprintw(the_window, '&');
 			}
 			else if ( cursor == 1 )
 			{
 				wmove(the_window, j, xmax);
-				vwprintw(the_window, '%');
+				wprintw(the_window, '%');
 			}
 			else if ( cursor == 2 )
 			{
 				wmove(the_window, j, xmax);
-				vwprintw(the_window, '$');
+				wprintw(the_window, '$');
 			}
 		}
 		xmax--;
@@ -385,17 +385,17 @@ void zone(WINDOW *the_window)
 			if ( cursor == 0 )
 			{
 				wmove(the_window, ymin, i);
-				vwprintw(the_window, '&');
+				wprintw(the_window, '&');
 			}
 			else if ( cursor == 1 )
 			{
 				wmove(the_window, ymin, i);
-				vwprintw(the_window, '%');
+				wprintw(the_window, '%');
 			}
 			else if ( cursor == 2 )
 			{
 				wmove(the_window, ymin, i);
-				vwprintw(the_window, '$');
+				wprintw(the_window, '$');
 			}
 		}
 		ymin++;
