@@ -28,6 +28,40 @@ void clearlaunch(MEVENT mouseevent);
 // Takes any window for its argument.
 void curl(WINDOW *the_window);
 
+// snake: Starting from the top left, prints all the way to
+// the bottom, moves over a space, all the way to the top,
+// then repeats.
+// Takes any window for its argument.
+void snake(WINDOW *the_window);
+
+void snake(WINDOW *the_window)
+{
+	int i, j, xmin, xmax, ymin, ymax, ch;
+	ch = getch();
+	getmaxyx(the_window, ymax, xmax);
+	xmin = 1;
+	while( xmin < xmax-1 )
+	{
+		for ( j = 1; j < ymax-1; j++ )
+		{
+			mvwaddch(the_window, j, xmin, ch);
+			wrefresh(the_window);
+			usleep(20000);
+		}
+		xmin++;
+		for ( j = ymax-2; j >= 1; j-- )
+		{
+			mvwaddch(the_window, j, xmin, ch);
+			wrefresh(the_window);
+			usleep(20000);
+		}
+		xmin++;
+	}
+	getch();
+}
+
+
+
 void curl(WINDOW *the_window)
 {
 	int i, j, xmax, ymax, xmin, ymin, ch;
