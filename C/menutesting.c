@@ -334,6 +334,26 @@ void zone(WINDOW *the_window)
 				mvwaddch(the_window, j, xmin, ch);
 			}
 		}
+		xmin++;
+		for ( i = xmin; i < xmax; i++ )
+		{
+			if ( cursor == 0 )
+			{
+				ch = '▓';
+				mvwaddch(the_window, ymax, i, ch);
+			}
+			else if ( cursor == 1 )
+			{
+				ch = '▒';
+				mvwaddch(the_window, ymax, i, ch);
+			}
+			else if ( cursor == 2 )
+			{
+				ch = '░';
+				mvwaddch(the_window, ymax, i, ch);
+			}
+		}
+		ymax--;
 	}
 }
 
