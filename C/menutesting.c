@@ -322,8 +322,14 @@ void zone(WINDOW *the_window)
 	ymin = 1;
 	cursor = 0;
 	getmaxyx(the_window, ymax, xmax);
-	while( xmin <= xmax && ymin <= ymax )
+	ymax -= 2;
+	xmax -= 2;
+	while( xmin <= xmax && ymin < ymax )
 	{
+		if ( cursor > 2 )
+		{
+			cursor = 0;
+		}
 		for ( j = ymin; j < ymax; j++ )
 		{
 			if ( cursor == 0 )
@@ -346,7 +352,7 @@ void zone(WINDOW *the_window)
 			}
 		}
 		xmin++;
-		for ( i = xmin; i < xmax; i++ )
+		for ( i = xmin-1; i <= xmax; i++ )
 		{
 			if ( cursor == 0 )
 			{
@@ -413,7 +419,8 @@ void zone(WINDOW *the_window)
 		}
 		ymin++;
 		wrefresh(the_window);
-		usleep(50000);
+		usleep(200000);
+		cursor++;
 	}
 	getch();
 }
