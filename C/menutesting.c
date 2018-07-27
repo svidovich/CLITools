@@ -307,6 +307,36 @@ void snake(WINDOW *the_window)
 	getch();
 }
 
+void zone(WINDOW *the_window)
+{
+	int i, j, ymax, ymin, xmax, xmin, cursor, ch;
+	xmin = 1;
+	ymin = 1;
+	cursor = 0;
+	getmaxyx(the_window, ymax, xmax);
+	while( xmin <= xmax && ymin <= ymax )
+	{
+		for ( j = ymin; j < ymax; j++ )
+		{
+			if ( cursor == 0 )
+			{
+				ch = '▓';
+				mvwaddch(the_window, j, xmin, ch);
+			}
+			else if ( cursor == 1 )
+			{
+				ch = '▒';
+				mvwaddch(the_window, j, xmin, ch);
+			}
+			else if ( cursor == 2 )
+			{
+				ch = '░';
+				mvwaddch(the_window, j, xmin, ch);
+			}
+		}
+	}
+}
+
 void clearwin(WINDOW *the_window)
 {
 	int i, j, x, y, ch;
