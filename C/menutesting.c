@@ -316,7 +316,8 @@ void snake(WINDOW *the_window)
 
 void zone(WINDOW *the_window)
 {
-	int i, j, ymax, ymin, xmax, xmin, cursor, ch;
+	int i, j, ymax, ymin, xmax, xmin, cursor;
+	char ch;
 	xmin = 1;
 	ymin = 1;
 	cursor = 0;
@@ -328,17 +329,20 @@ void zone(WINDOW *the_window)
 			if ( cursor == 0 )
 			{
 				ch = '▓';
-				mvwaddch(the_window, j, xmin, ch);
+				wmove(the_window, j, xmin);
+				printw(ch);
 			}
 			else if ( cursor == 1 )
 			{
 				ch = '▒';
-				mvwaddch(the_window, j, xmin, ch);
+				wmove(the_window, j, xmin);
+				printw(ch);
 			}
 			else if ( cursor == 2 )
 			{
 				ch = '░';
-				mvwaddch(the_window, j, xmin, ch);
+				wmove(the_window, j, xmin);
+				printw(ch);
 			}
 		}
 		xmin++;
@@ -347,17 +351,20 @@ void zone(WINDOW *the_window)
 			if ( cursor == 0 )
 			{
 				ch = '▓';
-				mvwaddch(the_window, ymax, i, ch);
+				wmove(the_window, ymax, i);
+				printw(ch);
 			}
 			else if ( cursor == 1 )
 			{
 				ch = '▒';
-				mvwaddch(the_window, ymax, i, ch);
+				wmove(the_window, ymax, i);
+				printw(ch);
 			}
 			else if ( cursor == 2 )
 			{
 				ch = '░';
-				mvwaddch(the_window, ymax, i, ch);
+				wmove(the_window, ymax, i);
+				printw(ch);
 			}
 		}
 		ymax--;
@@ -366,17 +373,20 @@ void zone(WINDOW *the_window)
 			if ( cursor == 0 )
 			{
 				ch = '▓';
-				mvwaddch(the_window, j, xmax, ch);
+				wmove(the_window, j, xmax);
+				printw(ch);
 			}
 			else if ( cursor == 1 )
 			{
 				ch = '▒';
-				mvwaddch(the_window, j, xmax, ch);
+				wmove(the_window, j, xmax);
+				printw(ch);
 			}
 			else if ( cursor == 2 )
 			{
 				ch = '░';
-				mvwaddch(the_window, j, xmax, ch);
+				wmove(the_window, j, xmax);
+				printw(ch);
 			}
 		}
 		xmax--;
@@ -385,17 +395,20 @@ void zone(WINDOW *the_window)
 			if ( cursor == 0 )
 			{
 				ch = '▓';
-				mvwaddch(the_window, ymin, i, ch);
+				wmove(the_window, ymin, i);
+				printw(ch);
 			}
 			else if ( cursor == 1 )
 			{
 				ch = '▒';
-				mvwaddch(the_window, ymin, i, ch);
+				wmove(the_window, ymin, i);
+				printw(ch);
 			}
 			else if ( cursor == 2 )
 			{
 				ch = '░';
-				mvwaddch(the_window, ymin, i, ch);
+				wmove(the_window, ymin, i);
+				printw(ch);
 			}
 		}
 		ymin++;
