@@ -287,13 +287,13 @@ void snake(WINDOW *the_window)
 	ch = getch();
 	getmaxyx(the_window, ymax, xmax);
 	xmin = 1;
-	while( xmin <= xmax )
+	while( xmin < xmax-1 )
 	{
-		for ( j = 1; j <= ymax; j++ )
+		for ( j = 1; j < ymax-1; j++ )
 		{
 			mvwaddch(the_window, j, xmin, ch);
 			wrefresh(the_window);
-			usleep(1500);
+			usleep(2500);
 		}
 		xmin ++;
 	}
