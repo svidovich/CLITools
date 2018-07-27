@@ -11,6 +11,7 @@ void curl(WINDOW *the_window);
 void clearwin(WINDOW *the_window);
 void navigatemenu(WINDOW *the_window);
 void snake(WINDOW *the_window);
+void zone(WINDOW *the_window);
 
 // TODO: Make this into a struct that holds all of this data 
 //       then, the  menu becomes arbitrary.
@@ -22,7 +23,7 @@ void snake(WINDOW *the_window);
 		"Band",
 		"Curl",
 		"Snake",
-		"IV",
+		"Zone",
 		"Exit"
 	};
 	// sizeof(choices) gives the size of an array of character pointers.
@@ -163,6 +164,12 @@ void navigatemenu(WINDOW *the_window)
 			{
 				clearwin(the_window);
 				snake(the_window);
+				clearwin(the_window);
+			}
+		else if( choice == 4 )
+			{
+				clearwin(the_window);
+				zone(the_window);
 				clearwin(the_window);
 			}
 		else if( choice != 0 )
