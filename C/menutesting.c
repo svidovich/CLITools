@@ -354,7 +354,48 @@ void zone(WINDOW *the_window)
 			}
 		}
 		ymax--;
+		for ( j = ymin; j <= ymax; j++ )
+		{
+			if ( cursor == 0 )
+			{
+				ch = '▓';
+				mvwaddch(the_window, j, xmax, ch);
+			}
+			else if ( cursor == 1 )
+			{
+				ch = '▒';
+				mvwaddch(the_window, j, xmax, ch);
+			}
+			else if ( cursor == 2 )
+			{
+				ch = '░';
+				mvwaddch(the_window, j, xmax, ch);
+			}
+		}
+		xmax--;
+		for ( i = xmin; i <= xmax; i++ )
+		{
+			if ( cursor == 0 )
+			{
+				ch = '▓';
+				mvwaddch(the_window, ymin, i, ch);
+			}
+			else if ( cursor == 1 )
+			{
+				ch = '▒';
+				mvwaddch(the_window, ymin, i, ch);
+			}
+			else if ( cursor == 2 )
+			{
+				ch = '░';
+				mvwaddch(the_window, ymin, i, ch);
+			}
+		}
+		ymin++;
+		wrefresh(the_window);
+		usleep(50000);
 	}
+	getch();
 }
 
 void clearwin(WINDOW *the_window)
