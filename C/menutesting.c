@@ -293,9 +293,16 @@ void snake(WINDOW *the_window)
 		{
 			mvwaddch(the_window, j, xmin, ch);
 			wrefresh(the_window);
-			usleep(2500);
+			usleep(5000);
 		}
-		xmin ++;
+		xmin++;
+		for ( j = ymax-2; j >= 1; j-- )
+		{
+			mvwaddch(the_window, j, xmin, ch);
+			wrefresh(the_window);
+			usleep(5000);
+		}
+		xmin++;
 	}
 	getch();
 }
