@@ -273,6 +273,25 @@ void curl(WINDOW *the_window)
 	getch();
 }
 
+
+void snake(WINDOW *the_window)
+{
+	int i, j, xmin, xmax, ymin, ymax, ch;
+	ch = getch();
+	getmaxyx(the_window, ymax, xmax);
+	xmin = 1;
+	while( xmin <= xmax )
+	{
+		for ( j = 1; j <= ymax; j++ )
+		{
+			mvwaddch(the_window, j, xmin);
+			wrefresh(the_window);
+			usleep(1500);
+		}
+		xmin ++;
+	}
+}
+
 void clearwin(WINDOW *the_window)
 {
 	int i, j, x, y, ch;
