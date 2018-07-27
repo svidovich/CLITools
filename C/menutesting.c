@@ -10,6 +10,7 @@ void band(WINDOW *the_window);
 void curl(WINDOW *the_window);
 void clearwin(WINDOW *the_window);
 void navigatemenu(WINDOW *the_window);
+void snake(WINDOW *the_window);
 
 // TODO: Make this into a struct that holds all of this data 
 //       then, the  menu becomes arbitrary.
@@ -20,7 +21,7 @@ void navigatemenu(WINDOW *the_window);
 	{
 		"Band",
 		"Curl",
-		"III",
+		"Snake",
 		"IV",
 		"Exit"
 	};
@@ -158,6 +159,12 @@ void navigatemenu(WINDOW *the_window)
 				curl(the_window);
 				clearwin(the_window);
 			}
+		else if( choice == 3 )
+			{
+				clearwin(the_window);
+				snake(the_window);
+				clearwin(the_window);
+			}
 		else if( choice != 0 )
 			{
 				break;
@@ -290,6 +297,7 @@ void snake(WINDOW *the_window)
 		}
 		xmin ++;
 	}
+	getch();
 }
 
 void clearwin(WINDOW *the_window)
