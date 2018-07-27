@@ -317,6 +317,7 @@ void snake(WINDOW *the_window)
 void zone(WINDOW *the_window)
 {
 	int i, j, ymax, ymin, xmax, xmin, cursor;
+	char ch;
 	xmin = 1;
 	ymin = 1;
 	cursor = 0;
@@ -327,18 +328,21 @@ void zone(WINDOW *the_window)
 		{
 			if ( cursor == 0 )
 			{
+				ch = '&';
 				wmove(the_window, j, xmin);
-				wprintw(the_window, '&');
+				wprintw(the_window, "%c", ch);
 			}
 			else if ( cursor == 1 )
 			{
+				ch = '%';
 				wmove(the_window, j, xmin);
-				wprintw(the_window, '%');
+				wprintw(the_window, "%c", ch);
 			}
 			else if ( cursor == 2 )
 			{
+				ch = '$';
 				wmove(the_window, j, xmin);
-				wprintw(the_window, '$');
+				wprintw(the_window, "%c", ch);
 			}
 		}
 		xmin++;
@@ -346,18 +350,21 @@ void zone(WINDOW *the_window)
 		{
 			if ( cursor == 0 )
 			{
+				ch = '&';
 				wmove(the_window, ymax, i);
-				wprintw(the_window, '&');
+				wprintw(the_window, "%c", ch);
 			}
 			else if ( cursor == 1 )
 			{
+				ch = '%';
 				wmove(the_window, ymax, i);
-				wprintw(the_window, '%');
+				wprintw(the_window, "%c", ch);
 			}
 			else if ( cursor == 2 )
 			{
+				ch = '$';
 				wmove(the_window, ymax, i);
-				wprintw(the_window, '$');
+				wprintw(the_window, "%c", ch);
 			}
 		}
 		ymax--;
@@ -365,18 +372,21 @@ void zone(WINDOW *the_window)
 		{
 			if ( cursor == 0 )
 			{
+				ch = '&';
 				wmove(the_window, j, xmax);
-				wprintw(the_window, '&');
+				wprintw(the_window, "%c", ch);
 			}
 			else if ( cursor == 1 )
 			{
+				ch = '%';
 				wmove(the_window, j, xmax);
-				wprintw(the_window, '%');
+				wprintw(the_window, "%c", ch);
 			}
 			else if ( cursor == 2 )
 			{
+				ch = '$';
 				wmove(the_window, j, xmax);
-				wprintw(the_window, '$');
+				wprintw(the_window, "%c", ch);
 			}
 		}
 		xmax--;
@@ -384,18 +394,21 @@ void zone(WINDOW *the_window)
 		{
 			if ( cursor == 0 )
 			{
+				ch = '&';
 				wmove(the_window, ymin, i);
-				wprintw(the_window, '&');
+				wprintw(the_window, "%c", ch);
 			}
 			else if ( cursor == 1 )
 			{
+				ch = '%';
 				wmove(the_window, ymin, i);
-				wprintw(the_window, '%');
+				wprintw(the_window, "%c", ch);
 			}
 			else if ( cursor == 2 )
 			{
+				ch = '$';
 				wmove(the_window, ymin, i);
-				wprintw(the_window, '$');
+				wprintw(the_window, "%c", ch);
 			}
 		}
 		ymin++;
