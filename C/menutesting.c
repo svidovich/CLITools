@@ -302,18 +302,22 @@ void snake(WINDOW *the_window)
 	ch = getch();
 	getmaxyx(the_window, ymax, xmax);
 	xmin = 1;
-	while( xmin < xmax-1 )
+	while( xmin < xmax-2 )
 	{
 		for ( j = 1; j < ymax-1; j++ )
 		{
+			wattron(the_window, COLOR_PAIR(j % 7));
 			mvwaddch(the_window, j, xmin, ch);
+			wattroff(the_window, COLOR_PAIR(j % 7));
 			wrefresh(the_window);
 			usleep(10000);
 		}
 		xmin++;
 		for ( j = ymax-2; j >= 1; j-- )
 		{
+			wattron(the_window, COLOR_PAIR(j % 7));
 			mvwaddch(the_window, j, xmin, ch);
+			wattroff(the_window, COLOR_PAIR(j % 7));
 			wrefresh(the_window);
 			usleep(10000);
 		}
