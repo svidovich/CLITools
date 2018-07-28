@@ -257,28 +257,36 @@ void curl(WINDOW *the_window)
 	{
 		for( j = xmin; j <= xmax; j++ )
 		{
+			wattron(the_window, COLOR_PAIR(i % 7));
 			mvwaddch(the_window, ymin, j, ch);
+			wattroff(the_window, COLOR_PAIR(i % 7));
 			wrefresh(the_window);
 			usleep(1500);
 		}
 		ymin += 1;
 		for( i = ymin; i <= ymax; i++ )
 		{
+			wattron(the_window, COLOR_PAIR(i % 7));
 			mvwaddch(the_window, i, xmax, ch);
+			wattroff(the_window, COLOR_PAIR(i % 7));
 			wrefresh(the_window);
 			usleep(1500);
 		}
 		xmax -= 1;
 		for( j = xmax; j >= xmin; j-- )
 		{
+			wattron(the_window, COLOR_PAIR(i % 7));
 			mvwaddch(the_window, ymax, j, ch);
+			wattroff(the_window, COLOR_PAIR(i % 7));
 			wrefresh(the_window);
 			usleep(1500);
 		}
 		ymax -= 1;
 		for( i = ymax; i >= ymin; i-- )
 		{
+			wattron(the_window, COLOR_PAIR(i % 7));
 			mvwaddch(the_window, i, xmin, ch);
+			wattroff(the_window, COLOR_PAIR(i % 7));
 			wrefresh(the_window);
 			usleep(1500);
 		}
@@ -300,14 +308,14 @@ void snake(WINDOW *the_window)
 		{
 			mvwaddch(the_window, j, xmin, ch);
 			wrefresh(the_window);
-			usleep(20000);
+			usleep(10000);
 		}
 		xmin++;
 		for ( j = ymax-2; j >= 1; j-- )
 		{
 			mvwaddch(the_window, j, xmin, ch);
 			wrefresh(the_window);
-			usleep(20000);
+			usleep(10000);
 		}
 		xmin++;
 	}
