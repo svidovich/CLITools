@@ -223,6 +223,7 @@ void removewindow(WINDOW *the_window)
 
 void menustatussmessage(WINDOW *the_window, char string[])
 {
+	int ymax, xmax;
 	getmaxyx(the_window, ymax, xmax);
 	wmove(the_window, ymax, xmax/2);
 	printf("%s",s);
@@ -230,9 +231,9 @@ void menustatussmessage(WINDOW *the_window, char string[])
 
 void menustatusmessagedelete(WINDOW *the_window, int arraylength)
 {
-	int i;
+	int i, ymax, xmax;
 	getmaxyx(the_window, ymax, xmax);
-	ch = "~";
+	char ch = "~";
 	for ( i = 0; i < arraylength; i++ )
 	{
 		mvwprintw(the_window, ymax, xmax/2 + i, "%c", ch);
