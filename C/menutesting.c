@@ -12,8 +12,8 @@ void clearwin(WINDOW *the_window);
 void navigatemenu(WINDOW *the_window);
 void snake(WINDOW *the_window);
 void zone(WINDOW *the_window);
-void menustatussmessage(WINDOW *the_window, char string[]);
-void menustatussmessagedelete(WINDOW *the_window, char string[]);
+void menustatusmessage(WINDOW *the_window, char string[]);
+void menustatusmessagedelete(WINDOW *the_window, int arraylength);
 void initcolors();
 
 // TODO: Make this into a struct that holds all of this data 
@@ -72,28 +72,28 @@ int main ()
 				char selected[] = "Menu 1 Selected";
 				menustatusmessage(tl, selected);
 				navigatemenu(tl);
-				menustatusmessagedelete(tl, 15);
+//				menustatusmessagedelete(tl, 15);
 			}
 			else if( windowselection == KEY_F(2))
 			{
 				char selected[] = "Menu 2 Selected";
 				menustatusmessage(tr, selected);
 				navigatemenu(tr);
-				menustatusmessagedelete(tr, 15);
+//				menustatusmessagedelete(tr, 15);
 			}
 			else if( windowselection == KEY_F(3))
 			{
 				char selected[] = "Menu 3 Selected";
 				menustatusmessage(bl, selected);
 				navigatemenu(bl);
-				menustatusmessagedelete(bl, 15);
+//				menustatusmessagedelete(bl, 15);
 			}
 			else if( windowselection == KEY_F(4))
 			{
 				char selected[] = "Menu 4 Selected";
 				menustatusmessage(br, selected);
 				navigatemenu(br);
-				menustatusmessagedelete(br, 15);
+//				menustatusmessagedelete(br, 15);
 			}
 			else if( windowselection == KEY_F(9))
 			{
@@ -221,23 +221,25 @@ void removewindow(WINDOW *the_window)
 	delwin(the_window);
 }
 
-void menustatussmessage(WINDOW *the_window, char string[])
+void menustatusmessage(WINDOW *the_window, char string[])
 {
 	int ymax, xmax;
 	getmaxyx(the_window, ymax, xmax);
-	wmove(the_window, ymax, xmax/2);
-	printf("%s",s);
+//	wmove(the_window, ymax, xmax/2);
+	mvwaddstr(the_window, ymax, xmax/2, string);
+	wrefresh(the_window);
 }
 
 void menustatusmessagedelete(WINDOW *the_window, int arraylength)
 {
 	int i, ymax, xmax;
 	getmaxyx(the_window, ymax, xmax);
-	char ch = "~";
+	int ch = '~';
 	for ( i = 0; i < arraylength; i++ )
 	{
 		mvwprintw(the_window, ymax, xmax/2 + i, "%c", ch);
 	}
+	wrefresh(the_window);
 }
 
 
