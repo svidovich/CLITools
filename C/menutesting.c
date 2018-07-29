@@ -200,6 +200,25 @@ void removewindow(WINDOW *the_window)
 	delwin(the_window);
 }
 
+void menustatussmessage(WINDOW *the_window, char string[])
+{
+	getmaxyx(the_window, ymax, xmax);
+	wmove(the_window, ymax, xmax/2);
+	printf("%s",s);
+}
+
+void menustatusmessagedelete(WINDOW *the_window, int arraylength)
+{
+	int i;
+	getmaxyx(the_window, ymax, xmax);
+	ch = "~";
+	for ( i = 0; i < arraylength; i++ )
+	{
+		mvwprintw(the_window, ymax, xmax/2 + i, "%c", ch);
+	}
+}
+
+
 // TODO: Fix weird coloring issues with the menu options
 // Builds a menu with n options
 void buildmenu(WINDOW *the_window, int highlight)
