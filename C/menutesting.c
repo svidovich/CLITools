@@ -12,6 +12,9 @@ void clearwin(WINDOW *the_window);
 void navigatemenu(WINDOW *the_window);
 void snake(WINDOW *the_window);
 void zone(WINDOW *the_window);
+void menustatussmessage(WINDOW *the_window, char string[]);
+void menustatussmessagedelete(WINDOW *the_window, char string[]);
+void initcolors();
 
 // TODO: Make this into a struct that holds all of this data 
 //       then, the  menu becomes arbitrary.
@@ -46,15 +49,6 @@ int main ()
 	getmaxyx(stdscr, y, x);
 	start_color();
 	refresh();
-	// These lines initialize colors so we can do rainbows as desired
-	init_pair(0, COLOR_WHITE, COLOR_BLACK);
-	init_pair(1, COLOR_RED, COLOR_BLACK);
-	init_pair(2, COLOR_GREEN, COLOR_BLACK);
-	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
- 	init_pair(4, COLOR_BLUE, COLOR_BLACK);
-	init_pair(5, COLOR_MAGENTA, COLOR_BLACK);
-	init_pair(6, COLOR_CYAN, COLOR_BLACK);
-	init_pair(7, COLOR_WHITE, COLOR_BLACK);
 
 	// These lines create windows in the program, top left to bottom right
 	tl = createwindow(y/2,x/2, 0, 0, 1);
@@ -193,6 +187,19 @@ WINDOW *createwindow(int height, int width, int y0, int x0, int id)
 	wborder(the_window, ':', ':', '~', '~', id, 'x', 'x', 'x');
 	wrefresh(the_window);
 	return the_window;
+}
+
+void initcolors()
+{
+	// These lines initialize colors so we can do rainbows as desired
+	init_pair(0, COLOR_WHITE, COLOR_BLACK);
+	init_pair(1, COLOR_RED, COLOR_BLACK);
+	init_pair(2, COLOR_GREEN, COLOR_BLACK);
+	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
+ 	init_pair(4, COLOR_BLUE, COLOR_BLACK);
+	init_pair(5, COLOR_MAGENTA, COLOR_BLACK);
+	init_pair(6, COLOR_CYAN, COLOR_BLACK);
+	init_pair(7, COLOR_WHITE, COLOR_BLACK);
 }
 
 void removewindow(WINDOW *the_window)
