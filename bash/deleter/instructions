@@ -1,0 +1,2 @@
+build a script that will descend into all of the subdirectories of a folder, check if all of the files are older than a day, and if so, delete them.
+It should NOT delete files that are in the current directory, or elsewhere.
