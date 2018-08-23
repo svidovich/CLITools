@@ -18,7 +18,7 @@ while [ $run ]
 		elif [ "$input" = "3" ]; then
 			printf "\nDoing ps -eo pid,pcpu | sort -k 1 -nr | head -10:\n"
 			printf "PID   PCPU\n"
-			ps -eo pid,pcpu | sort -k 1 -nr | head -10
+			ps -eo pid,pcpu | sort -k 2 -nr | head -10
 		fi
 	done
 printf "\nGoodbye.\n"
