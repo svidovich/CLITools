@@ -1,0 +1,6 @@
+Construct scripts that:
+
+1. Extract the EFI files in a directory
+2. Recompress those files to tar format
+3. Move them all into a separate folder from origin
+
